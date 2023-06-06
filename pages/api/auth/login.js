@@ -3,7 +3,7 @@ import { AiFillFacebook } from 'react-icons/ai'
 
 export default function Login() {
     return (
-        <div>
+        <div className="shadow-xl mt-32 p-10 text-gray-700">
             <h2>Join</h2>
             <div>
                 <h3>Sign in man with other company</h3>

@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export default function House() {
+export default function Home() {
   return (
     <div>
       <Head>
