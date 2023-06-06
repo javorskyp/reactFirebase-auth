@@ -25,6 +25,22 @@ export default function Login() {
         }
       };
 
+    const fbProvider = new FacebookAuthProvider();
+    const FacebookProvider = async () => {
+    try {
+        const result = await signInWithPopup(auth, fbProvider);
+        const credantial = await FacebookAuthProvider.credentialFromResult(
+        result
+        );
+        const token = credantial.accessToken;
+        let photoUrl = result.user.photoURL + "?height=500&access_token=" + token;
+        await updateProfile(auth.currentUser, { photoURL: photoUrl });
+        route.push("/dashboard");
+    } catch (error) {
+        console.log(error);
+    }
+    };
+
     useEffect (() => {
         if (user) {
             route.push("/dashboard");
@@ -45,7 +61,7 @@ export default function Login() {
             <FcGoogle className="text-2xl" />
             Sign in with Google
           </button>
-          <button
+          <button onClick={FacebookProvider}
             className="text-white bg-gray-700 p-4 w-full font-medium rounded-lg flex align-middle gap-2 "
           >
             <AiFillFacebook className="text-2xl text-blue-300" />
